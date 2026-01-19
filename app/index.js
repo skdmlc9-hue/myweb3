@@ -1,14 +1,69 @@
+let selectedCard01 = null;
+let selectedCard02 = null;
+let v01;
+let v02;
+
 function setListenerToCard(){
     const cardAreaArr = document.querySelectorAll(".card-area");
     for(const cardArea of cardAreaArr){
         cardArea.addEventListener("click" , function(evt){
+            
+            //같은카드 또 선택하면, 아무것도 안하기
+            if(selectedCard01 !== null && se){
+                return;
+            }
 
+            //선택된카드 및 값 설정하기
+            if(selectedCard01 === null){
+                selectedCard01 = cardArea;
+                v01 = selectedCard01.children[0].children[0].innerHTML;
+            }else if(selectedCard01 !== null && selectedCard02 ){
+                selectedCard02 = cardArea;
+                v02 = selectedCard02.children[0].children[0].innerHTML;
+            }
+
+            //카드 뒤집어서 숫자 보여주기
             const temp = evt.currentTarget;
-            temp.classList.toggle("flip");
+            temp.classList.add("flip");
 
-            setTimeout(() => {
-                temp.classList.toggle("flip");
-            }, 3000);
+            //1번카드,2번카드 채워져있으면 다시 안보이게 뒤집기
+            if(selectedCard01 !== null && selectedCard02 !== null){
+                setTimeout(() => {
+                  const  x = selectedCard01;
+                  const  y = selectedCard02;
+
+                    x.remove("flip");
+                    y.remove("flip");
+                    
+                }, timeout);
+            },1000);
+
+            //값 일치하면 숨기기
+            if(selectedCard01 !== null && selectedCard02 
+                const removeCard01 = selectedCard01;
+                const removeCard02 = selectedCard02;
+                setTimeout(() => {
+                    removeCard01.classList.add("hide");
+                    removeCard01.children[0].classList.add("hide");
+                    removeCard01.children[0].children[0].classList.add("hide");
+                    removeCard01.children[0].children[1].classList.add("hide");
+
+                    removeCard02.classList.add("hide");
+                    removeCard02.children[0].classList.add("hide");
+                    removeCard02.children[0].children[0].classList.add("hide");
+                    removeCard02.children[0].children[1].classList.add("hide");
+                }, 100);
+            }
+
+            //카드 두장 골랐으면, 변수들 초기화 시키기
+            if(selectedCard01 !== null && selectedCard02 !== null){
+                selectedCard01 = null;
+                selectedCard02 = null;
+                v01 = null;
+                v02 = null;
+            }
+            
+            
         });
     }
 }

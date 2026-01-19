@@ -49,7 +49,10 @@ main{
     place-content: center center;
 }
 
+.card-area.hide{
+    visibility: hidden;
+}
 
 
 
-    
+
