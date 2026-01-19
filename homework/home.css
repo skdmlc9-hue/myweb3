@@ -9,7 +9,7 @@
     height: 100%;
     position: relative;
     backface-visibility: hidden;
-    transition: .7s;
+    transition: .3s;
 }
 
 /* 앞면 , 뒷면 */
@@ -50,6 +50,7 @@ main{
 }
 
 
+.card-back{
+    font-size: 40px;
+}
 
-
-    
